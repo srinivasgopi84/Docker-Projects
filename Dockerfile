@@ -1,10 +1,10 @@
-FROM microsoft/aspnetcore-build:1
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-cbl-mariner2.0-distroless-composite-extra
 WORKDIR /build
 COPY . .
 RUN dotnet restore lotrapi.csproj
 RUN dotnet publish lotrapi.csproj -c Release
 
-FROM microsoft/aspnetcore:1
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-cbl-mariner2.0-distroless-composite-extra
 LABEL Name=lotrapi Version=0.0.1
 WORKDIR /app
 EXPOSE 5000
