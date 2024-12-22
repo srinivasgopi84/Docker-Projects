@@ -7,7 +7,7 @@ WORKDIR /build
 ADD https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /build
 
 # Add the .NET SDK tar.gz file to the image
-RUN dotnet-sdk-1.0.0-rc4-004771-linux-x64.tar.gz /usr/share/dotnet/
+ADD dotnet-sdk-1.0.0-rc4-004771-linux-x64.tar.gz /usr/share/dotnet/
 
 # Set the environment variable to point to the new SDK 
 ENV DOTNET_ROOT=/usr/share/dotnet 
