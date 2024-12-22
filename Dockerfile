@@ -1,18 +1,16 @@
 # Use .NET 6 SDK as a parent image
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
+RUN mkdir -p /usr/share/dotnet
 # Set the working directory in the container
 WORKDIR /build
 
-ADD https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz .
+ADD https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /usr/share/dotnet/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz
 
-RUN mkdir -p /usr/share/dotnet
-
-RUN tar -xzvf dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /usr/share/dotnet
-
+# Extract the contents of the tar.gz file 
+RUN tar -xzvf /usr/share/dotnet/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz -C /usr/share/dotnet 
 # Set the environment variable to point to the new SDK 
 ENV DOTNET_ROOT=/usr/share/dotnet 
-
 # Verify the installed SDK version 
 RUN dotnet --version
 
