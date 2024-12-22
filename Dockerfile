@@ -1,18 +1,8 @@
 # Use .NET 6 SDK as a parent image
-FROM mcr.microsoft.com/dotnet/sdk:6.0-cbl-mariner2.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-cbl-mariner2.0-distroless-composite-extra AS build
 
-#RUN mkdir -p /usr/share/dotnet
 # Set the working directory in the container
 WORKDIR /build
-
-#ADD https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /usr/share/dotnet/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz
-
-# Extract the contents of the tar.gz file 
-#RUN tar -xzvf /usr/share/dotnet/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz -C /usr/share/dotnet 
-# Set the environment variable to point to the new SDK 
-#ENV DOTNET_ROOT=/usr/share/dotnet 
-# Verify the installed SDK version 
-#RUN dotnet --version
 
 # Copy the project files to the working directory
 COPY . .
@@ -24,7 +14,7 @@ RUN dotnet restore lotrapi.csproj
 RUN dotnet publish lotrapi.csproj -c Release -o /app/publish
 
 # Use a runtime image for the final build
-FROM mcr.microsoft.com/dotnet/sdk:6.0-cbl-mariner2.0 AS api
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-cbl-mariner2.0-distroless-composite-extra AS api
 
 # Set metadata for the container
 LABEL Name=lotrapi Version=0.0.1
