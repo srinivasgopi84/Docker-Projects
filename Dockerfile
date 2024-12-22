@@ -1,10 +1,10 @@
-FROM microsoft/aspnetcore-build:1 as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /build
 COPY . .
 RUN dotnet restore lotrapi.csproj
 RUN dotnet publish lotrapi.csproj -c Release
 
-FROM microsoft/aspnetcore:1 as api
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS api
 LABEL Name=lotrapi Version=0.0.1
 WORKDIR /app
 EXPOSE 5000
