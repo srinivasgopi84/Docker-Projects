@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  lotrapi:
+    container_name: lotrapi
+    image: lotrapi
+    build:
+      context: .
+    ports:
+      - 5000:5000

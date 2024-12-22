@@ -1,0 +1,68 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "publish",
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "publish",
+        "lotrapi.csproj"
+      ],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "taskName": "up-dev",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": [
+        "-f",
+        "docker-compose.debug.yml",
+        "up",
+        "-d",
+        "--build"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "taskName": "up-prod",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": [
+        "-f",
+        "docker-compose.yml",
+        "up",
+        "-d",
+        "--build"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "taskName": "down-dev",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": [
+        "-f",
+        "docker-compose.debug.yml",
+        "down"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "taskName": "down-prod",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": [
+        "-f",
+        "docker-compose.yml",
+        "down"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name":"LOTR API",
+            "type": "coreclr",
+            "request": "launch",
+            "cwd": "/app",
+            "program": "/app/lotrapi.dll",
+            "preLaunchTask": "publish",
+            "requireExactSource": false,
+            "sourceFileMap": {
+                "/app": "${workspaceRoot}"
+            },
+
+            "pipeTransport": {
+                "debuggerPath": "/vsdbg/vsdbg",
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "docker",
+                "pipeArgs": [ 
+                    "exec", "-i", "lotrapi"
+                ],
+                "quoteArgs": false
+            }
+        }
+    ]
+}

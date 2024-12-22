@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  lotrapi:
+    container_name: lotrapi
+    image: lotrapi:debug
+    build:
+      context: .
+      dockerfile: Dockerfile.debug
+    ports:
+      - 5000:5000
+    volumes:
+      - ./bin/Debug/netcoreapp1.1/publish:/app
