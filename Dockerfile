@@ -4,10 +4,10 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 # Set the working directory in the container
 WORKDIR /build
 
-RUN wget https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz
+ADD https://dotnetcli.azureedge.net/dotnet/Sdk/1.0.0-rc4-004915/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /build/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz
 
 # Add the .NET SDK tar.gz file to the image
-ADD dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /usr/share/dotnet/
+ADD /build/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz /usr/share/dotnet/
 
 # Set the environment variable to point to the new SDK 
 ENV DOTNET_ROOT=/usr/share/dotnet 
