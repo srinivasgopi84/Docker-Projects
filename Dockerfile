@@ -4,6 +4,15 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 # Set the working directory in the container
 WORKDIR /build
 
+# Add the .NET SDK tar.gz file to the image
+ADD dotnet-sdk-1.0.0-rc4-004771-linux-x64.tar.gz /usr/share/dotnet/
+
+# Set the environment variable to point to the new SDK 
+ENV DOTNET_ROOT=/usr/share/dotnet 
+
+# Verify the installed SDK version 
+RUN dotnet --version
+
 # Copy the project files to the working directory
 COPY . .
 
