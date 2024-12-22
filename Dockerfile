@@ -1,5 +1,5 @@
 # Use .NET 6 SDK as a parent image
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-cbl-mariner2.0 AS build
 
 RUN mkdir -p /usr/share/dotnet
 # Set the working directory in the container
@@ -24,7 +24,7 @@ RUN dotnet restore lotrapi.csproj
 RUN dotnet publish lotrapi.csproj -c Release -o /app/publish
 
 # Use a runtime image for the final build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS api
+FROM mcr.microsoft.com/dotnet/sdk:6.0-cbl-mariner2.0 AS api
 
 # Set metadata for the container
 LABEL Name=lotrapi Version=0.0.1
