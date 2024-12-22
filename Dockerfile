@@ -1,6 +1,8 @@
 # Use .NET 6 SDK as a parent image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-cbl-mariner2.0-distroless-composite-extra AS build
 
+# Update the package list and install bash 
+RUN apt-get update && apt-get install -y bash
 # Set the working directory in the container
 WORKDIR /build
 
