@@ -12,7 +12,7 @@ RUN tar -xzvf /usr/share/dotnet/dotnet-dev-osx-x64.1.0.0-rc4-004915.tar.gz -C /u
 # Set the environment variable to point to the new SDK 
 ENV DOTNET_ROOT=/usr/share/dotnet 
 # Verify the installed SDK version 
-RUN dotnet --version
+#RUN dotnet --version
 
 # Copy the project files to the working directory
 COPY . .
